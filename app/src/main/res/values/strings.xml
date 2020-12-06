@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">FmsApp</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_in_as_company">Sign in as company</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="manage_Categories">Manage Categories</string>
+    <string name="profile">Profile</string>
+    <string name="logout">Log out</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="loginName">Login Name</string>
+    <string name="surname">Surname</string>
+    <string name="edit">Edit</string>
+    <string name="categories">Categories</string>
+    <string name="category_details">Category details</string>
+    <string name="balance">Balance</string>
+    <string name="textview">TextView</string>
+    <string name="SystemBalance">System Balance:</string>
+    <string name="CategoryBalance">Category Balance:</string>
+    <string name="responsibleUsers">Responsible users</string>
+    <string name="incomes">Incomes</string>
+    <string name="expenses">Expenses</string>
+    <string name="manage">Manage</string>
+</resources>
