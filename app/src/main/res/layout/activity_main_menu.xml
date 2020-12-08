@@ -13,8 +13,8 @@
             android:layout_height="50dp" android:id="@+id/button"
             android:onClick="manageCategories"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@+id/button2"
-            app:layout_constraintHorizontal_bias="0.497" app:layout_constraintVertical_bias="0.713"/>
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintBottom_toTopOf="@+id/overview" android:layout_marginBottom="28dp"/>
     <Button
             android:text="@string/logout"
             android:layout_width="242dp"
@@ -29,6 +29,14 @@
             android:layout_height="50dp" android:id="@+id/button2"
             android:onClick="manageProfile"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497" android:layout_marginBottom="64dp"
+            app:layout_constraintHorizontal_bias="0.497" android:layout_marginBottom="28dp"
             app:layout_constraintBottom_toTopOf="@+id/button3"/>
+    <Button
+            android:text="@string/overview"
+            android:layout_width="242dp"
+            android:layout_height="50dp" android:id="@+id/overview"
+            android:onClick="goToOverview"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintBottom_toTopOf="@+id/button2" android:layout_marginBottom="28dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

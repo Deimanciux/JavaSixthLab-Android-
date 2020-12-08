@@ -22,4 +22,11 @@
     <string name="incomes">Incomes</string>
     <string name="expenses">Expenses</string>
     <string name="manage">Manage</string>
+    <string name="overview">Overview</string>
+    <string name="financeManagementSystem">Finance Management System</string>
+    <string name="moreOptions">More Options</string>
+    <string name="deleteCategory">Delete Category</string>
+    <string name="create">Create</string>
+    <string name="createCategory">Create Category</string>
+    <string name="description">Description</string>
 </resources>

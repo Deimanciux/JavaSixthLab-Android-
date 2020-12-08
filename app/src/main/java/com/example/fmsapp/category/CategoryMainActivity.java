@@ -2,6 +2,7 @@ package com.example.fmsapp.category;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -42,6 +43,13 @@ public class CategoryMainActivity extends AppCompatActivity implements Serializa
         fms = (FinanceManagementSystem) intent.getSerializableExtra("fms");
     }
 
+    public void createCategory (View view) {
+        Intent intent = new Intent(CategoryMainActivity.this, AddCategoryActivity.class);
+        intent.putExtra("fms", fms);
+        intent.putExtra("user", user);
+        startActivity(intent);
+    }
+
     private final class GetAllUserCategories extends AsyncTask<String, String, String> implements Serializable{
         @Override
         protected void onPreExecute() {
@@ -64,7 +72,7 @@ public class CategoryMainActivity extends AppCompatActivity implements Serializa
             super.onPostExecute(result);
 
             System.out.println("RECEIVED: " + result);
-            if (result != null) {
+            if (!result.equals("")) {
                 try {
                     Type listType = new TypeToken<ArrayList<Category>>() {
                     }.getType();
@@ -79,6 +87,7 @@ public class CategoryMainActivity extends AppCompatActivity implements Serializa
                         Intent singleCategoryWindow = new Intent(CategoryMainActivity.this, SingleCategoryActivity.class);
                         singleCategoryWindow.putExtra("category", categoryData.get(position));
                         singleCategoryWindow.putExtra("fms", fms);
+                        singleCategoryWindow.putExtra("user", user);
                         startActivity(singleCategoryWindow);
                     });
                 } catch (Exception e) {

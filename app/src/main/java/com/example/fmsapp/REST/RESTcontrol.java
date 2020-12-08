@@ -91,19 +91,12 @@ public class RESTcontrol {
         return null;
     }
 
-    public static String sendDelete(String p_url, String postDataParameters) throws Exception {
+    public static String sendDelete(String p_url) throws Exception {
         URL url = new URL(p_url);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         setConnectionParams(connection, "DELETE");
-
-        OutputStream out = connection.getOutputStream();
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
-        writer.write(postDataParameters);
-        writer.flush();
-        writer.close();
-        out.close();
-
         int resCode = connection.getResponseCode();
+
         if (resCode == HttpsURLConnection.HTTP_OK) {
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             StringBuffer sb = new StringBuffer("");

@@ -15,6 +15,14 @@
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true"
             tools:targetApi="m">
+        <activity android:name=".category.AddCategoryActivity">
+        </activity>
+        <activity android:name=".user.ResponsiblePersonActivity">
+        </activity>
+        <activity android:name=".MoreOptionsActivity">
+        </activity>
+        <activity android:name=".overview.OverviewActivity">
+        </activity>
         <activity android:name=".category.SingleCategoryActivity">
         </activity>
         <activity android:name=".user.UserProfileActivity">

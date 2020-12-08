@@ -1,4 +1,4 @@
-package com.example.fmsapp;
+package com.example.fmsapp.category;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -7,54 +7,70 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.fmsapp.R;
 import com.example.fmsapp.REST.RESTcontrol;
 import com.example.fmsapp.dataStructures.FinanceManagementSystem;
 import com.example.fmsapp.dataStructures.User;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
 
 import static com.example.fmsapp.IPAddress.address;
 
-public class LoginActivity extends AppCompatActivity {
+public class AddCategoryActivity extends AppCompatActivity {
     private FinanceManagementSystem fms;
+    private User user;
+    EditText name;
+    EditText description;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_add_category);
         retrieveExtras();
     }
 
     private void retrieveExtras() {
         Intent intent = getIntent();
+        user = (User) intent.getSerializableExtra("user");
         fms = (FinanceManagementSystem) intent.getSerializableExtra("fms");
+
+        name = findViewById(R.id.categoryName);
+        description = findViewById(R.id.categoryDescription);
     }
 
-    public void connectToFms(View v) {
-        EditText login = findViewById(R.id.loginField);
-        EditText psw = findViewById(R.id.passwordField);
-        String loginData = "{\"loginName\":\"" + login.getText().toString() +
-                "\", \"password\":\"" + psw.getText().toString()+
-                "\", \"fms_id\":" + fms.getId() + "}";
+    public void createCategory(View view) {
+        if(!checkIfFieldsAreEmpty()) {
+            Toast.makeText(AddCategoryActivity.this, "Fields can not be empty", Toast.LENGTH_LONG);
+            return;
+        }
 
-        UserLogin userLogin = new UserLogin();
-        userLogin.execute(loginData);
+        String categoryData = "{\"name\":\"" + name.getText() +
+                "\", \"description\":\"" + description.getText() +
+                "\", \"fmsId\":\"" + fms.getId() +
+                "\", \"userId\":\"" + user.getId() +
+                "\"}";
+
+        CategoryCreator categoryCreator = new CategoryCreator();
+        categoryCreator.execute(categoryData);
     }
 
+    private boolean checkIfFieldsAreEmpty() {
+        return isNotEmpty(name.getText().toString()) &&
+                isNotEmpty(description.getText().toString());
+    }
 
-    private final class UserLogin extends AsyncTask<String, String, String> {
+    private boolean isNotEmpty(String text) {
+        return text != null && !text.equals("");
+    }
+
+    private final class CategoryCreator extends AsyncTask<String, String, String> {
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Toast.makeText(LoginActivity.this, "Validating login data", Toast.LENGTH_LONG).show();
         }
 
         @Override
         protected String doInBackground(String... params) {
-            String url = address + "/user/login";
+            String url = address + "/category";
             String postDataParameters = params[0];
             System.out.println("SENT: " + postDataParameters);
             try {
@@ -69,23 +85,12 @@ public class LoginActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             System.out.println("RECEIVED: " + result);
-            if (result.equals("")) {
+            if (result.equals("0")) {
                 Toast.makeText(getBaseContext(), "Wrong data", Toast.LENGTH_LONG).show();
                 return;
             }
 
-            try {
-                Type type = new TypeToken<User>() {}.getType();
-                User user = new Gson().fromJson(result, type);
-
-                Intent mainMenuWindow = new Intent(LoginActivity.this, MainMenuActivity.class);
-                mainMenuWindow.putExtra("fms", fms);
-                mainMenuWindow.putExtra("user", user);
-                startActivity(mainMenuWindow);
-            } catch (Exception e) {
-                e.printStackTrace();
-                Toast.makeText(LoginActivity.this, "Wrong data", Toast.LENGTH_LONG).show();
-            }
+            Toast.makeText(AddCategoryActivity.this, "Category created", Toast.LENGTH_LONG);
         }
     }
 }

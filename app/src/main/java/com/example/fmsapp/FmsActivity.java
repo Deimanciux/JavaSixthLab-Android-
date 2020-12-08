@@ -50,7 +50,7 @@ public class FmsActivity extends AppCompatActivity {
             super.onPostExecute(result);
 
             System.out.println("RECEIVED: " + result);
-            if (result != null) {
+            if (!result.equals("")) {
                 try {
                     Type listType = new TypeToken<ArrayList<FinanceManagementSystem>>() {
                     }.getType();

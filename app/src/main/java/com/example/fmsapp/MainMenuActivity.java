@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.example.fmsapp.category.CategoryMainActivity;
 import com.example.fmsapp.dataStructures.FinanceManagementSystem;
 import com.example.fmsapp.dataStructures.User;
+import com.example.fmsapp.overview.OverviewActivity;
 import com.example.fmsapp.user.UserProfileActivity;
 
 public class MainMenuActivity extends AppCompatActivity {
@@ -43,5 +44,11 @@ public class MainMenuActivity extends AppCompatActivity {
     public void logOutUser(View view) {
         Intent logOutUserWindow = new Intent(MainMenuActivity.this, FmsActivity.class);
         startActivity(logOutUserWindow);
+    }
+
+    public void goToOverview(View view) {
+        Intent overviewWindow = new Intent(MainMenuActivity.this, OverviewActivity.class);
+        overviewWindow.putExtra("user", user);
+        startActivity(overviewWindow);
     }
 }
