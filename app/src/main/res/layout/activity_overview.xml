@@ -8,6 +8,12 @@
         tools:context=".overview.OverviewActivity">
 
     <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/toDate"
+            app:layout_constraintStart_toEndOf="@+id/textView26" app:layout_constraintTop_toBottomOf="@+id/fromDate"
+            android:layout_marginLeft="40dp" android:layout_marginTop="28dp" android:layout_marginStart="40dp"/>
+    <TextView
             android:text="@string/overview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/textView11"
@@ -15,9 +21,49 @@
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="28dp"
             app:layout_constraintHorizontal_bias="0.498"/>
     <ListView
-            android:layout_width="352dp"
-            android:layout_height="633dp"
+            android:layout_width="333dp"
+            android:layout_height="379dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.491"
-            android:layout_marginBottom="32dp" android:id="@+id/overviewList"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="288dp" android:id="@+id/overviewList"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/fromDate"
+            app:layout_constraintStart_toEndOf="@+id/textView21"
+            app:layout_constraintTop_toBottomOf="@+id/overviewList" android:layout_marginLeft="24dp"
+            android:layout_marginTop="44dp" android:layout_marginStart="24dp"/>
+    <TextView
+            android:text="@string/fromDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView21"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/overviewList"
+            android:layout_marginLeft="36dp" android:layout_marginTop="44dp" android:layout_marginStart="36dp"/>
+    <TextView
+            android:text="@string/toDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/textView21"
+            android:layout_marginTop="28dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="36dp" android:layout_marginStart="36dp" android:id="@+id/textView26"/>
+    <Button
+            android:text="@string/generate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/button8"
+            android:onClick="generateBalanceByDate"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="36dp" android:layout_marginRight="36dp" android:layout_marginBottom="176dp"/>
+    <TextView
+            android:text="@string/generatedBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView24"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="36dp"
+            android:layout_marginStart="36dp" app:layout_constraintTop_toBottomOf="@+id/textView26"
+            android:layout_marginTop="24dp"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/generatedBalance"
+            app:layout_constraintStart_toEndOf="@+id/textView24" app:layout_constraintTop_toBottomOf="@+id/toDate"
+            android:layout_marginLeft="28dp" android:layout_marginTop="24dp" android:layout_marginStart="28dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
