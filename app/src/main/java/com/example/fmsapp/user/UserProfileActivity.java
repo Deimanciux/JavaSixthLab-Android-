@@ -34,6 +34,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
         loginName = findViewById(R.id.loginName);
         loginName.setText(user.getLoginName());
+        loginName.setEnabled(false);
 
         email = findViewById(R.id.email);
         email.setText(user.getEmail());
